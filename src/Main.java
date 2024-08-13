@@ -1,7 +1,4 @@
-import workshop_1.Discount_calculator;
-import workshop_1.Leap_year;
-import workshop_1.Number_ordering;
-import workshop_1.Triangle;
+import workshop_1.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,5 +41,14 @@ public class Main {
 
         // Call the function and show result
         calculator.finalPrice();
+
+        // 5. ----------------------
+
+        // Multiplication table instance
+        Multiplication_table table = new Multiplication_table();
+
+        //Call the function and show result
+        table.showTable();
+
     }
 }
