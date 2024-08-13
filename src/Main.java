@@ -50,5 +50,16 @@ public class Main {
         //Call the function and show result
         table.showTable();
 
+        // 6. ----------------------
+
+        // Average instance
+        Average myAverage = new Average();
+
+        // Call the function
+        float avg = myAverage.calculateAvg();
+
+        // Show result
+        System.out.println("The average is: " + avg);
+
     }
 }
