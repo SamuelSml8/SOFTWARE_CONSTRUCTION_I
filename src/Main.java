@@ -1,3 +1,4 @@
+import workshop_1.Leap_year;
 import workshop_1.Triangle;
 
 public class Main {
@@ -14,5 +15,16 @@ public class Main {
         System.out.println("Is Equilateral: " + isEquilateral);
         System.out.println("Is Isosceles: " + isIsosceles);
         System.out.println("Is Scalene: " + isScalene);
+
+        // 2. ----------------------
+
+        // Leap year instance
+        Leap_year leapYear = new Leap_year();
+
+        // Call the function
+        boolean isLeapYear = leapYear.isLeapYear();
+
+        // Show result
+        System.out.println("Is leap year: " + isLeapYear);
     }
 }
