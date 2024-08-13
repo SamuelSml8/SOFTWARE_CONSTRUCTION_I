@@ -1,3 +1,4 @@
+import workshop_1.Discount_calculator;
 import workshop_1.Leap_year;
 import workshop_1.Number_ordering;
 import workshop_1.Triangle;
@@ -33,7 +34,15 @@ public class Main {
         // Number ordering instance
         Number_ordering numberOrdering = new Number_ordering();
 
-        // Call the function and Show result
+        // Call the function and show result
         numberOrdering.ordering();
+
+        // 4. ----------------------
+
+        // Discount Calculator instance
+        Discount_calculator calculator = new Discount_calculator();
+
+        // Call the function and show result
+        calculator.finalPrice();
     }
 }
