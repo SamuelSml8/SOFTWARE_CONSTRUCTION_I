@@ -1,4 +1,5 @@
 import workshop_1.Leap_year;
+import workshop_1.Number_ordering;
 import workshop_1.Triangle;
 
 public class Main {
@@ -26,5 +27,13 @@ public class Main {
 
         // Show result
         System.out.println("Is leap year: " + isLeapYear);
+
+        // 3. ----------------------
+
+        // Number ordering instance
+        Number_ordering numberOrdering = new Number_ordering();
+
+        // Call the function and Show result
+        numberOrdering.ordering();
     }
 }
