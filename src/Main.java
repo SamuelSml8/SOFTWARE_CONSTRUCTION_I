@@ -1,5 +1,6 @@
 import Models.Task;
 import workshop_2.GradeAverage;
+import workshop_2.OrderingNumbers;
 import workshop_2.TaskManagement;
 
 import java.util.Scanner;
@@ -52,6 +53,14 @@ public class Main {
                 System.out.println("\nOpción inválida");
             }
         }
+
+        // Ordering of odd and even numbers in separate lists
+
+        // Instance OrderingNumbers
+        OrderingNumbers myNumbers = new OrderingNumbers();
+
+        // Call the method
+        myNumbers.numbersToOrdering();
     }
 
 }
