@@ -1,5 +1,6 @@
 import Models.Task;
 import workshop_2.GradeAverage;
+import workshop_2.MatrixAddition;
 import workshop_2.OrderingNumbers;
 import workshop_2.TaskManagement;
 
@@ -61,6 +62,11 @@ public class Main {
 
         // Call the method
         myNumbers.numbersToOrdering();
+
+        // Addition of matrices
+
+        // Instance MatrixAddition
+        MatrixAddition myMatrixAddition = new MatrixAddition();
     }
 
 }
