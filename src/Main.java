@@ -1,8 +1,5 @@
 import Models.Task;
-import workshop_2.GradeAverage;
-import workshop_2.MatrixAddition;
-import workshop_2.OrderingNumbers;
-import workshop_2.TaskManagement;
+import workshop_2.*;
 
 import java.util.Scanner;
 
@@ -67,6 +64,11 @@ public class Main {
 
         // Instance MatrixAddition
         MatrixAddition myMatrixAddition = new MatrixAddition();
+
+        // Calculation of the factorial of a number
+
+        // Instance FactorialNumber
+        FactorialNumber myFactorial = new FactorialNumber();
     }
 
 }
