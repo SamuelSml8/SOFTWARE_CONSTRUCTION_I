@@ -69,6 +69,11 @@ public class Main {
 
         // Instance FactorialNumber
         FactorialNumber myFactorial = new FactorialNumber();
+
+        // Caesar Cipher
+
+        //Instance CaesarCipher
+        CaesarCipher myCaesarCipher = new CaesarCipher();
     }
 
 }
