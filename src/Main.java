@@ -1,79 +1,89 @@
-import Models.Task;
-import workshop_2.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 import java.util.Scanner;
 
+/**
+ * @author ESTUDIANTE
+ */
 public class Main {
 
+    public static final String PASSWORD_SYSTEM = "123456789";
+    public static CredentialItem credential;
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
+
+        System.out.println("===== Sistema de GC ========");
+
         Scanner sc = new Scanner(System.in);
 
-        // Calculation of grade point average
+        ManagementCredentials managementCredentials = new ManagementCredentials();
+        int opcion = 3;
+        do {
 
-        // GradeAverage instance
-        GradeAverage myGrade = new GradeAverage();
+            System.out.print("Ingrese Contraseña: ");
+            String password = sc.nextLine();
 
-        // Call the function and show it
-        System.out.println(myGrade.status());
+            if (PASSWORD_SYSTEM.equals(password)) {
+                System.out.println("Ingresando!!");
+                int modulo;
+                do {
+                    System.out.println("==== Lista de Modulos");
 
-        // Task list management
-        TaskManagement myTaskList = new TaskManagement();
+                    System.out.println("0 -> Listar Credenciales");
+                    System.out.println("1 -> Crear Credencial");
+                    System.out.println("2 -> Agregar Credencial");
+                    System.out.println("3 -> Buscar Credencial");
+                    System.out.println("4 -> Salir");
+                    System.out.print("Entrar al modulo: ");
+                    modulo = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("");
 
-        while (true) {
-            System.out.println("\nGESTIÓN DE TAREAS\n");
-            System.out.println("1. Agregar nueva tarea");
-            System.out.println("2. Marcar tarea como completada");
-            System.out.println("3. Tareas pendientes");
-            System.out.println("4. Salir\n");
-            System.out.println("Opción deseada: ");
-            String option = sc.nextLine();
+                    switch (modulo) {
+                        case 0:
+                            managementCredentials.getCredentials();
+                            break;
+                        case 1:
+                            credential = managementCredentials.createCredential();
+                            break;
+                        case 2:
+                            if (credential == null) {
+                                System.out.println("No hay credencial en memoria. ");
+                            }
+                            managementCredentials.addCredential(credential);
+                            break;
+                        case 3:
+                            System.out.println("Ingrese el servicio a buscar: ");
+                            String service = sc.nextLine();
+                            CredentialItem search = managementCredentials.searchCredential(service);
 
-            if (option.equals("1")) {
-                System.out.println("\nAGREGAR TAREA");
-                System.out.println("\nTítulo: ");
-                String title = sc.nextLine();
-                System.out.println("\nDescripción: ");
-                String description = sc.nextLine();
-                Task task = new Task(title, description, false);
-                System.out.println(myTaskList.addTask(task));
-            } else if (option.equals("2")) {
-                System.out.println("\nMARCAR TAREA COMPLETADA");
-                System.out.println("\nID de la tarea: ");
-                int id = Integer.parseInt(sc.nextLine());
-                System.out.println(myTaskList.taskDone(id));
-            } else if (option.equals("3")) {
-                System.out.println("\nTAREAS PENDIENTES");
-                System.out.println(myTaskList.getPendingTasks());
-            } else if (option.equals("4")) {
-                System.out.println(myTaskList.exit());
-                break;
+                            if (search != null) {
+                                System.out.println("La credencial existe! ");
+                            } else {
+                                System.out.println("Credencial no encontrada. ");
+                            }
+                            break;
+                        case 4:
+                            System.out.println("Saliendo....");
+                            break;
+                        default:
+                            System.out.println("Opcion no valida!");
+                            break;
+                    }
+                } while (modulo != 4);
             } else {
-                System.out.println("\nOpción inválida");
+                opcion--;
+                System.out.println("Te quedan " + opcion + "intentos");
             }
-        }
 
-        // Ordering of odd and even numbers in separate lists
-
-        // Instance OrderingNumbers
-        OrderingNumbers myNumbers = new OrderingNumbers();
-
-        // Call the method
-        myNumbers.numbersToOrdering();
-
-        // Addition of matrices
-
-        // Instance MatrixAddition
-        MatrixAddition myMatrixAddition = new MatrixAddition();
-
-        // Calculation of the factorial of a number
-
-        // Instance FactorialNumber
-        FactorialNumber myFactorial = new FactorialNumber();
-
-        // Caesar Cipher
-
-        //Instance CaesarCipher
-        CaesarCipher myCaesarCipher = new CaesarCipher();
+        } while (opcion != 0);
     }
 
 }
