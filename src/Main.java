@@ -1,89 +1,75 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import workshop_3.Course;
+import workshop_3.Student;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-/**
- * @author ESTUDIANTE
- */
 public class Main {
-
-    public static final String PASSWORD_SYSTEM = "123456789";
-    public static CredentialItem credential;
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-
-        System.out.println("===== Sistema de GC ========");
 
         Scanner sc = new Scanner(System.in);
 
-        ManagementCredentials managementCredentials = new ManagementCredentials();
-        int opcion = 3;
-        do {
+        List<Student> students = new ArrayList<>();
 
-            System.out.print("Ingrese Contraseña: ");
-            String password = sc.nextLine();
+        // STEP 2.2: Create some students and add to students list | Imagine that license plate is a unique value
+        Student studentOne = new Student("Samuel", 19, "2024");
+        Student studentTwo = new Student("Samuel", 17, "2023");
+        Student studentThree = new Student("Cristian", 17, "2022");
 
-            if (PASSWORD_SYSTEM.equals(password)) {
-                System.out.println("Ingresando!!");
-                int modulo;
-                do {
-                    System.out.println("==== Lista de Modulos");
+        students.add(studentOne);
+        students.add(studentTwo);
+        students.add(studentThree);
 
-                    System.out.println("0 -> Listar Credenciales");
-                    System.out.println("1 -> Crear Credencial");
-                    System.out.println("2 -> Agregar Credencial");
-                    System.out.println("3 -> Buscar Credencial");
-                    System.out.println("4 -> Salir");
-                    System.out.print("Entrar al modulo: ");
-                    modulo = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println("");
+        // STEP 2.1: Create a course with code and name.
+        Course course = new Course("code", "software construction", students);
 
-                    switch (modulo) {
-                        case 0:
-                            managementCredentials.getCredentials();
-                            break;
-                        case 1:
-                            credential = managementCredentials.createCredential();
-                            break;
-                        case 2:
-                            if (credential == null) {
-                                System.out.println("No hay credencial en memoria. ");
-                            }
-                            managementCredentials.addCredential(credential);
-                            break;
-                        case 3:
-                            System.out.println("Ingrese el servicio a buscar: ");
-                            String service = sc.nextLine();
-                            CredentialItem search = managementCredentials.searchCredential(service);
+        // STEP 5: execute the project
 
-                            if (search != null) {
-                                System.out.println("La credencial existe! ");
-                            } else {
-                                System.out.println("Credencial no encontrada. ");
-                            }
-                            break;
-                        case 4:
-                            System.out.println("Saliendo....");
-                            break;
-                        default:
-                            System.out.println("Opcion no valida!");
-                            break;
-                    }
-                } while (modulo != 4);
-            } else {
-                opcion--;
-                System.out.println("Te quedan " + opcion + "intentos");
+        label:
+        while (true) {
+            System.out.println("                             ");
+            System.out.println("========= MAIN MENU =========");
+            System.out.println("1) Find students by name");
+            System.out.println("2) Delete student");
+            System.out.println("3) Update student");
+            System.out.println("4) Sort students by name");
+            System.out.println("5) Exit");
+            System.out.println("===========================");
+            System.out.print("Choose: ");
+            String option = sc.nextLine();
+
+            switch (option) {
+                case "5":
+                    System.out.println("                ");
+                    System.out.println("Come back soon");
+                    break label;
+                case "1":
+                    System.out.print("Name: ");
+                    String name = sc.nextLine();
+                    System.out.println(course.findStudentsByName(name));
+                    break;
+                case "2":
+                    System.out.print("License plate: ");
+                    String licensePlate = sc.nextLine();
+                    course.deleteStudent(licensePlate);
+                    break;
+                case "3":
+                    System.out.print("License plate to search student to update: ");
+                    String licensePlateToSearch = sc.nextLine();
+                    System.out.print("New name: ");
+                    String newName = sc.nextLine();
+                    System.out.print("New age: ");
+                    int newAge = Integer.parseInt(sc.nextLine());
+                    System.out.println(course.updateStudent(newName, newAge, licensePlateToSearch));
+                    break;
+                case "4":
+                    System.out.println(course.sortingStudentsByName());
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+                    break;
             }
-
-        } while (opcion != 0);
+        }
     }
-
 }
